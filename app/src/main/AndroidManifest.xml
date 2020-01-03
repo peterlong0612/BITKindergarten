@@ -27,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ActivityChangeFilter"></activity>
+        <activity android:name=".activity.ActivityChangeFilter"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".activity.ActivityChangeRGBA" />
         <activity android:name=".activity.ActivityColorMatrix" />
         <activity android:name=".activity.ActivityChangeHue" />

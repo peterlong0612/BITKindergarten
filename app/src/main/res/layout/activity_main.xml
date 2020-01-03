@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -18,7 +19,7 @@
             android:layout_height="100dp"
             android:layout_marginBottom="10dp"
             android:background="#00BFFF"
-            android:text="ColorMatrix效果演示" />
+            android:text="ColorMatrix效果" />
 
         <Button
             android:id="@+id/btn_Two"
@@ -26,7 +27,7 @@
             android:layout_height="100dp"
             android:background="#F0F800"
             android:layout_marginBottom="10dp"
-            android:text="改变色调原理演示" />
+            android:text="改变色调" />
 
         <Button
             android:id="@+id/btn_Three"
@@ -34,14 +35,14 @@
             android:layout_height="100dp"
             android:layout_marginBottom="10dp"
             android:background="#00FFFF"
-            android:text="改像素点RGBA效果演示" />
+            android:text="改像素点RGBA效果" />
 
         <Button
             android:id="@+id/btn_Four"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="#00FF00"
-            android:text="颜色滤镜效果演示" />
+            android:text="为照片添加滤镜" />
 
 
     </LinearLayout>
