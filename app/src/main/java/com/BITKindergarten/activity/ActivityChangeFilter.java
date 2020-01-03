@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -18,13 +19,16 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.BITKindergarten.MainActivity;
 import com.BITKindergarten.PermissionUtils;
 import com.BITKindergarten.R;
 
@@ -113,6 +117,9 @@ public class ActivityChangeFilter extends AppCompatActivity {
             case R.id.btn_save_bitmap:
             {
                 saveImage(mBitmap);
+                Toast toast=Toast.makeText(getApplicationContext(),"保存成功",Toast.LENGTH_SHORT    );
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
                 break;
             }
             case R.id.filterbtn_11:
@@ -350,30 +357,71 @@ public class ActivityChangeFilter extends AppCompatActivity {
     }
 
     /** 保存方法 */
-    public void saveImage(Bitmap mSaveBitmap ) {
-        if (mSaveBitmap == null)
-            return ;
-        String picName= imgUri.toString() + savecount;
-        Log.e(TAG, "保存图片");
-        File f = new File("/sdcard/BITKindergarten/files/", picName);
-        if (f.exists()) {
-            f.delete();
+//    public void saveImage(Bitmap mSaveBitmap ) {
+//        if (mSaveBitmap == null)
+//            return ;
+//        String picName= Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + imgUri.toString() ;
+//        Log.e(TAG, "保存图片");
+//        File f = new File("/sdcard/BITKindergarten/files/", picName);
+//        if (f.exists()) {
+//            f.delete();
+//        }
+//        try {
+//            FileOutputStream out = new FileOutputStream(f);
+//            mSaveBitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+//            out.flush();
+//            out.close();
+//            Log.i(TAG, "已经保存");
+//        } catch (FileNotFoundException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//        savecount = savecount+1;
+//    }
+        //保存文件到指定路径
+        public static boolean saveImage( Bitmap bmp) {
+            // 首先保存图片
+            String storePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "BITKindergartenImg";
+            File appDir = new File(storePath);
+            if (!appDir.exists()) {
+                appDir.mkdir();
+            }
+            String fileName = System.currentTimeMillis() + ".jpg";
+            File file = new File(appDir, fileName);
+            try {
+                FileOutputStream fos = new FileOutputStream(file);
+                //通过io流的方式来压缩保存图片
+                boolean isSuccess = bmp.compress(Bitmap.CompressFormat.JPEG, 60, fos);
+                fos.flush();
+                fos.close();
+
+//                Toast ts = Toast.makeText(getBaseContext(),"保存成功！", Toast.LENGTH_LONG);
+//
+//                ts.show();
+
+
+
+                //把文件插入到系统图库
+                //MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), fileName, null);
+
+                //保存图片后发送广播通知更新数据库
+//                Uri uri = Uri.fromFile(file);
+//                context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
+//                if (isSuccess) {
+//                    return true;
+//                } else {
+//                    return false;
+//                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return false;
         }
-        try {
-            FileOutputStream out = new FileOutputStream(f);
-            mSaveBitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
-            out.flush();
-            out.close();
-            Log.i(TAG, "已经保存");
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        savecount = savecount+1;
-    }
+
 
 
     @Override
