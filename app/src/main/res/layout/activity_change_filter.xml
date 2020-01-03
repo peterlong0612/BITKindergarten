@@ -219,7 +219,15 @@
                     android:onClick="OnClick">
 
                 </Button>
+                <Button
+                    android:id="@+id/btn_save_bitmap"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="保存"
+                    android:onClick="OnClick">
 
+                </Button>
 
             </LinearLayout>
         </LinearLayout>

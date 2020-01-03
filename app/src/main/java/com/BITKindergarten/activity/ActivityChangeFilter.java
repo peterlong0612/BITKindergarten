@@ -3,7 +3,6 @@ package com.BITKindergarten.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -16,17 +15,26 @@ import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewDebug;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.BITKindergarten.PermissionUtils;
 import com.BITKindergarten.R;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -46,6 +54,7 @@ public class ActivityChangeFilter extends AppCompatActivity {
     private Bitmap mBitmap;
     private Bitmap oBitmap;
 
+    private int savecount = 0;
     //private RecyclerView mRecyclerView;
     //private BeautyAdapter mBeautyAdapter;
     private List<float[]> mColorMatrixList;
@@ -55,6 +64,7 @@ public class ActivityChangeFilter extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_filter);
 
+        //PermissionUtils.isGrantExternalRW(this,1);
         chooseImage();
         initViewAB();
 
@@ -98,6 +108,11 @@ public class ActivityChangeFilter extends AppCompatActivity {
             {
                 imgViewB.setImageDrawable(null);
                 chooseImage();
+                break;
+            }
+            case R.id.btn_save_bitmap:
+            {
+                saveImage(mBitmap);
                 break;
             }
             case R.id.filterbtn_11:
@@ -286,68 +301,6 @@ public class ActivityChangeFilter extends AppCompatActivity {
     }
 
 
-
-
-    /**
-     * 滤镜列表Adapter
-     */
-//    class BeautyAdapter extends RecyclerView.Adapter<BeautyAdapter.BeautyViewHolder> {
-//
-//        @NonNull
-//        @Override
-//        public BeautyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//            View view = LayoutInflater.from(ActivityChangeFilter.this).inflate(R.layout.item_recyclerview_image, null, false);
-//            BeautyViewHolder beautyViewHolder = new BeautyViewHolder(view);
-//            return beautyViewHolder;
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(@NonNull BeautyViewHolder holder, int position) {
-//            ImageView imageView = holder.imageView;
-//            if (imageView != null) {
-//                imageView.setImageBitmap(mBitmap);
-//                ColorMatrix colorMatrix = new ColorMatrix();
-//                colorMatrix.set(mColorMatrixList.get(position));
-//                imageView.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-//            }
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return mColorMatrixList == null ? 0 : mColorMatrixList.size();
-//        }
-//
-//        class BeautyViewHolder extends RecyclerView.ViewHolder {
-//
-//            private ImageView imageView;
-//
-//            public BeautyViewHolder(View itemView) {
-//                super(itemView);
-//                imageView = itemView.findViewById(R.id.imageView);
-//            }
-//        }
-//    }
-//
-//    /**
-//     * 滤镜列表边框
-//     */
-//    class ItemDecoration extends RecyclerView.ItemDecoration {
-//        @Override
-//        public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
-//            super.onDraw(c, parent, state);
-//        }
-//
-//        @Override
-//        public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-//            super.onDrawOver(c, parent, state);
-//        }
-//
-//        @Override
-//        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-//            outRect.set(3, 3, 3, 3);
-//        }
-//    }
-
     //初始化图片视图
     private void initViewAB(){
         imgViewA = findViewById(R.id.imgViewA);
@@ -369,7 +322,7 @@ public class ActivityChangeFilter extends AppCompatActivity {
     //选择图片之后的事件
     @Override
     protected void onActivityResult(int requestCode, int resultCode, final Intent data) {
-        //用户操作完成，结果代码返回是-1，即RERULT_OK
+        //用户操作完成，结果代码返1回是-，即RERULT_OK
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             //todo 获取文件定位，放置选择的图片
@@ -395,6 +348,33 @@ public class ActivityChangeFilter extends AppCompatActivity {
         }
         Log.d(TAG, "onActivityResult() called with: requestCode = [" + requestCode + "], resultCode = [" + resultCode + "], data = [" + data + "]");
     }
+
+    /** 保存方法 */
+    public void saveImage(Bitmap mSaveBitmap ) {
+        if (mSaveBitmap == null)
+            return ;
+        String picName= imgUri.toString() + savecount;
+        Log.e(TAG, "保存图片");
+        File f = new File("/sdcard/BITKindergarten/files/", picName);
+        if (f.exists()) {
+            f.delete();
+        }
+        try {
+            FileOutputStream out = new FileOutputStream(f);
+            mSaveBitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.flush();
+            out.close();
+            Log.i(TAG, "已经保存");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        savecount = savecount+1;
+    }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

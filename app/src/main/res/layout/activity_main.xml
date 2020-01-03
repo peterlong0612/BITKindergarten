@@ -27,7 +27,7 @@
             android:layout_height="100dp"
             android:background="#F0F800"
             android:layout_marginBottom="10dp"
-            android:text="改变色调" />
+            android:text="通过矩阵改变色调" />
 
         <Button
             android:id="@+id/btn_Three"

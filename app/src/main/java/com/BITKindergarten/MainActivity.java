@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        PermissionUtils.isGrantExternalRW(this,1);
+
         findViewById(R.id.btn_One).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
