@@ -105,6 +105,17 @@ public class ActivityChangeFilter extends AppCompatActivity {
     }
 
 
+    private void addFilter(int pos){
+
+        if (imgViewA != null) {
+            imgViewB.setImageBitmap(mBitmap);
+            ColorMatrix colorMatrix = new ColorMatrix();
+            colorMatrix.set(mColorMatrixList.get(pos));
+            //colorMatrix.set(ImageUtil.colormatrix_huguang);
+            imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
+        }
+
+    }
     //按钮响应事件
     public void OnClick(View v){
         switch (v.getId()){
@@ -124,184 +135,78 @@ public class ActivityChangeFilter extends AppCompatActivity {
             }
             case R.id.filterbtn_11:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(0));
-                    //colorMatrix.set(ImageUtil.colormatrix_huguang);
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(0);
+                break;
             }
             case R.id.filterbtn_12:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(1));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(1);
+                break;
             }
             case R.id.filterbtn_13:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(2));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(2);
+                break;
             }
             case R.id.filterbtn_14:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(3));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(3);break;
             }
             case R.id.filterbtn_15:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(4));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(4);break;
             }
             case R.id.filterbtn_16:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(5));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(5);break;
             }
             case R.id.filterbtn_21:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(6));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(6);break;
             }
             case R.id.filterbtn_22:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(7));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(7);break;
             }
             case R.id.filterbtn_23:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(8));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(8);break;
             }
             case R.id.filterbtn_24:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(9));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(9);break;
             }
             case R.id.filterbtn_25:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(10));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(10);break;
             }
             case R.id.filterbtn_26:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(11));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(11);break;
             }
             case R.id.filterbtn_31:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(12));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(12);break;
             }
             case R.id.filterbtn_32:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(13));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(13);break;
             }
             case R.id.filterbtn_33:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(14));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(14);break;
             }
             case R.id.filterbtn_34:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(15));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(15);break;
             }
             case R.id.filterbtn_35:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(16));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(16);break;
             }
             case R.id.filterbtn_36:
             {
-                if (imgViewA != null) {
-                    imgViewB.setImageBitmap(mBitmap);
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    colorMatrix.set(mColorMatrixList.get(17));
-                    imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
-                    break;
-                }
+                addFilter(17);break;
             }
 
         }
