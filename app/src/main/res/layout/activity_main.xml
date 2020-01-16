@@ -4,44 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/mainbackground"
+            android:src="@drawable/lena"
+            android:layout_weight="100"
+            >
 
+
+        </ImageView>
         <Button
             android:id="@+id/btn_One"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginBottom="10dp"
-            android:background="#00BFFF"
+            android:layout_weight="1"
+            android:background="#662196F3"
             android:text="ColorMatrix效果" />
 
         <Button
             android:id="@+id/btn_Two"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#F0F800"
-            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="#66FFFF00"
             android:text="通过矩阵改变色调" />
 
         <Button
             android:id="@+id/btn_Three"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:layout_marginBottom="10dp"
-            android:background="#00FFFF"
+            android:layout_weight="1"
+            android:background="#6600FFFF"
             android:text="改像素点RGBA颜色反转" />
 
         <Button
             android:id="@+id/btn_Four"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#00FF00"
+            android:layout_weight="1"
+            android:background="#6600FF00"
             android:text="为照片添加滤镜" />
 
 

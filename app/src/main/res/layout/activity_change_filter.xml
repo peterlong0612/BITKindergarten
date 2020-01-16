@@ -51,6 +51,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="11"
                     android:onClick="OnClick"/>
 
@@ -59,6 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="12"
                     android:onClick="OnClick"/>
 
@@ -67,6 +69,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="13"
                     android:onClick="OnClick"/>
 
@@ -75,6 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="14"
                     android:onClick="OnClick"/>
 
@@ -83,6 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="15"
                     android:onClick="OnClick"/>
 
@@ -91,6 +96,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="16"
                     android:onClick="OnClick"/>
             </LinearLayout>
@@ -105,6 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="21"
                     android:onClick="OnClick"
                     />
@@ -113,6 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="22"
                     android:onClick="OnClick"
                     />
@@ -121,6 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="23"
                     android:onClick="OnClick"
                     />
@@ -129,6 +138,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="24"
                     android:onClick="OnClick"
                     />
@@ -137,6 +147,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="25"
                     android:onClick="OnClick"
                     />
@@ -145,6 +156,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="26"
                     android:onClick="OnClick"
                     />
@@ -160,6 +172,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="31"
                     android:onClick="OnClick"
                     />
@@ -168,6 +181,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="32"
                     android:onClick="OnClick"
                     />
@@ -176,6 +190,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="33"
                     android:onClick="OnClick"
                     />
@@ -184,6 +199,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="34"
                     android:onClick="OnClick"
                     />
@@ -192,6 +208,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="35"
                     android:onClick="OnClick"
                     />
@@ -200,6 +217,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:text="36"
                     android:onClick="OnClick"
                     />
@@ -214,6 +232,7 @@
                     android:id="@+id/btn_select_image"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_weight="1"
                     android:text="选择图片"
                     android:onClick="OnClick">
@@ -223,6 +242,7 @@
                     android:id="@+id/btn_save_bitmap"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_weight="1"
                     android:text="保存"
                     android:onClick="OnClick">
