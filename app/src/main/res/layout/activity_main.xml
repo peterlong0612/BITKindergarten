@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:id="@+id/mainbackground"
             android:src="@drawable/lena"
-            android:layout_weight="100"
+            android:layout_weight="7"
             >
 
 
