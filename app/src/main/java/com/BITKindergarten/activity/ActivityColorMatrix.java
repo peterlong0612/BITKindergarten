@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import com.BITKindergarten.R;
+import com.BITKindergarten.utils.ImageUtil;
 
 public class ActivityColorMatrix extends AppCompatActivity implements SeekBar.OnSeekBarChangeListener {
 
@@ -50,8 +51,9 @@ public class ActivityColorMatrix extends AppCompatActivity implements SeekBar.On
         mSaturationSeekBar.setProgress(MIN_PROGRESS);
         mScaleSeekBar.setProgress(MIN_PROGRESS);
 
-
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test);
+        /**
+         * 获得图片*/
+        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test2);
 
     }
 

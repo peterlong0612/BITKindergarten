@@ -1,47 +1,36 @@
 package com.BITKindergarten.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.BlurMaskFilter;
 import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
-import android.graphics.Rect;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewDebug;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.BITKindergarten.MainActivity;
-import com.BITKindergarten.PermissionUtils;
 import com.BITKindergarten.R;
+import com.BITKindergarten.utils.ImageUtil;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import static android.app.Activity.RESULT_OK;
 
 /**
  * 简单滤镜效果演示
@@ -54,9 +43,16 @@ public class ActivityChangeFilter extends AppCompatActivity {
     private ImageView imgViewA;
     private ImageView imgViewB;
 
+    public static final int DRAW_TYPE_MATRIX = 0;
+    public static final int DRAW_TYPE_MASK = 1;
+    private BlurMaskFilter blurMaskFilter;
+    private RectF rectF;
+    private int finalPos;
+    private int drawType = 0;
+
     private Uri imgUri;
     private Bitmap mBitmap;
-    private Bitmap oBitmap;
+    private Bitmap sBitmap;
 
     private int savecount = 0;
     //private RecyclerView mRecyclerView;
@@ -71,8 +67,8 @@ public class ActivityChangeFilter extends AppCompatActivity {
         //PermissionUtils.isGrantExternalRW(this,1);
         chooseImage();
         initViewAB();
-
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test);
+        /** 获得图片*/
+//        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test2);
 
 
         mColorMatrixList = new ArrayList<float[]>();
@@ -82,7 +78,7 @@ public class ActivityChangeFilter extends AppCompatActivity {
         mColorMatrixList.add(ImageUtil.colormatrix_qingning);
         mColorMatrixList.add(ImageUtil.colormatrix_yese);
         mColorMatrixList.add(ImageUtil.colormatrix_fugu);
-        mColorMatrixList.add(ImageUtil.colormatrix_huan_huang);
+        mColorMatrixList.add(ImageUtil.colormatrix_fan_huang);
         mColorMatrixList.add(ImageUtil.colormatrix_jiuhong);
         mColorMatrixList.add(ImageUtil.colormatrix_chuan_tong);
         mColorMatrixList.add(ImageUtil.colormatrix_ruise);
@@ -104,9 +100,8 @@ public class ActivityChangeFilter extends AppCompatActivity {
 
     }
 
-
     private void addFilter(int pos){
-
+        /** 这个判定稍显简单，但是有效*/
         if (imgViewA != null) {
             imgViewB.setImageBitmap(mBitmap);
             ColorMatrix colorMatrix = new ColorMatrix();
@@ -115,6 +110,7 @@ public class ActivityChangeFilter extends AppCompatActivity {
             imgViewB.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
         }
 
+        finalPos = pos;
     }
     //按钮响应事件
     public void OnClick(View v){
@@ -127,10 +123,16 @@ public class ActivityChangeFilter extends AppCompatActivity {
             }
             case R.id.btn_save_bitmap:
             {
-                saveImage(mBitmap);
-                Toast toast=Toast.makeText(getApplicationContext(),"保存成功",Toast.LENGTH_SHORT    );
-                toast.setGravity(Gravity.CENTER, 0, 0);
-                toast.show();
+//                saveImage(oBitmap);
+                // 获取imgviewB中已经滤镜处理且加载好的图片
+//                Bitmap sBitmap = ((BitmapDrawable)imgViewB.getDrawable()).getBitmap();
+//                String url = FileUtils.storePath + System.currentTimeMillis() + ".jpg";
+//                String url = FileUtils.SAVE_FILE + System.currentTimeMillis() + ".jpg";
+//                saveImage(sBitmap);
+//                imgViewB.setImageBitmap(sBitmap);
+
+                saveImage(getChangeBitmap(mBitmap));
+
                 break;
             }
             case R.id.filterbtn_11:
@@ -212,7 +214,6 @@ public class ActivityChangeFilter extends AppCompatActivity {
         }
     }
 
-
     //初始化图片视图
     private void initViewAB(){
         imgViewA = findViewById(R.id.imgViewA);
@@ -244,8 +245,8 @@ public class ActivityChangeFilter extends AppCompatActivity {
             ContentResolver cr= this.getContentResolver();
             try{
                 //获取图片
+                // mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test2);
                 mBitmap = BitmapFactory.decodeStream(cr.openInputStream(imgUri));
-                oBitmap = BitmapFactory.decodeStream(cr.openInputStream(imgUri));
                 imgViewA.setImageBitmap(mBitmap);
             } catch (FileNotFoundException e){
                 Log.e("Exception",e.getMessage(),e);
@@ -256,98 +257,86 @@ public class ActivityChangeFilter extends AppCompatActivity {
         else{
             //操作错误或者没有选择图片
             Log.i("MainActivity","Operation Error!");
-
         }
         Log.d(TAG, "onActivityResult() called with: requestCode = [" + requestCode + "], resultCode = [" + resultCode + "], data = [" + data + "]");
     }
 
     /** 保存方法 */
-//    public void saveImage(Bitmap mSaveBitmap ) {
-//        if (mSaveBitmap == null)
-//            return ;
-//        String picName= Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + imgUri.toString() ;
-//        Log.e(TAG, "保存图片");
-//        File f = new File("/sdcard/BITKindergarten/files/", picName);
-//        if (f.exists()) {
-//            f.delete();
-//        }
-//        try {
-//            FileOutputStream out = new FileOutputStream(f);
-//            mSaveBitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
-//            out.flush();
-//            out.close();
-//            Log.i(TAG, "已经保存");
-//        } catch (FileNotFoundException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//        savecount = savecount+1;
-//    }
-        //保存文件到指定路径
-        public static boolean saveImage( Bitmap bmp) {
-            // 首先保存图片
-            String storePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "BITKindergartenImg";
-            File appDir = new File(storePath);
-            if (!appDir.exists()) {
-                appDir.mkdir();
-            }
-            String fileName = System.currentTimeMillis() + ".jpg";
-            File file = new File(appDir, fileName);
-            try {
-                FileOutputStream fos = new FileOutputStream(file);
-                //通过io流的方式来压缩保存图片
-                boolean isSuccess = bmp.compress(Bitmap.CompressFormat.JPEG, 60, fos);
-                fos.flush();
-                fos.close();
+    //保存文件到指定路径
+    public boolean saveImage(Bitmap bmp) {
+        // 首先保存图片
+        String storePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "BITKindergartenImg";
+        File appDir = new File(storePath);
+        if (!appDir.exists()) {
+            appDir.mkdir();
+        }
+        String fileName = "滤镜图片" + System.currentTimeMillis() + ".jpg";
+        File file = new File(appDir, fileName);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            //通过io流的方式来压缩保存图片
+            boolean isSuccess = bmp.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+            Log.d("Fliter/saveImage()", "已经保存");
+            Toast toast=Toast.makeText(getApplicationContext(),"保存成功",Toast.LENGTH_SHORT    );
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
 
-//                Toast ts = Toast.makeText(getBaseContext(),"保存成功！", Toast.LENGTH_LONG);
-//
-//                ts.show();
+            //把文件插入到系统图库
 
+//            MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), fileName, null);
 
-
-                //把文件插入到系统图库
-                //MediaStore.Images.Media.insertImage(context.getContentResolver(), file.getAbsolutePath(), fileName, null);
-
-                //保存图片后发送广播通知更新数据库
-//                Uri uri = Uri.fromFile(file);
-//                context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
-//                if (isSuccess) {
-//                    return true;
-//                } else {
-//                    return false;
-//                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return false;
+            //保存图片后发送广播通知更新数据库
+//            Uri uri = Uri.fromFile(file);
+//            context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri));
+//            if (isSuccess) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_IMAGE_CAPTURE: {
-                //todo 判断权限是否已经授予
-
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-                for (int i = 0; i < permissions.length ; i++ ){
-                    Log.i("MainActivity","申请的权限为：" + permissions[i] +"，申请结果：" +
-                            grantResults[i]);
-                }
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[1] == PackageManager.PERMISSION_GRANTED
-                        && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
-                    //takeVideo();
-                    break;
-                }
-            }
-        }
+        return false;
     }
+
+    public Bitmap getChangeBitmap( Bitmap srcBitmap) {
+
+        //创建一个大小相同的空白Bitmap
+        Bitmap dstBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+
+        ColorMatrix colorMatrix = new ColorMatrix();
+        colorMatrix.set(mColorMatrixList.get(finalPos));
+        //载入Canvas,Paint
+        Canvas canvas = new Canvas(dstBitmap);
+        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        paint.setColorFilter(new ColorMatrixColorFilter(colorMatrix));
+        //绘图
+        canvas.drawBitmap(srcBitmap, 0, 0, paint);
+        return dstBitmap;
+    }
+
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        switch (requestCode) {
+//            case REQUEST_IMAGE_CAPTURE: {
+//                //todo 判断权限是否已经授予
+//
+//                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//                for (int i = 0; i < permissions.length ; i++ ){
+//                    Log.i("MainActivity","申请的权限为：" + permissions[i] +"，申请结果：" +
+//                            grantResults[i]);
+//                }
+//                if (grantResults.length > 0
+//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED
+//                        && grantResults[1] == PackageManager.PERMISSION_GRANTED
+//                        && grantResults[2] == PackageManager.PERMISSION_GRANTED) {
+//                    //takeVideo();
+//                    break;
+//                }
+//            }
+//        }
+//    }
 }

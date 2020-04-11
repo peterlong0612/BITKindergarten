@@ -1,4 +1,4 @@
-package com.BITKindergarten;
+package com.BITKindergarten.utils;
 
 import android.Manifest;
 import android.app.Activity;

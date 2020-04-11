@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 
 import com.BITKindergarten.R;
+import com.BITKindergarten.utils.ImageUtil;
 
 public class ActivityChangeRGBA extends AppCompatActivity {
 
@@ -22,7 +23,7 @@ public class ActivityChangeRGBA extends AppCompatActivity {
         setContentView(R.layout.activity_change_rgb);
         mImageView = findViewById(R.id.imageView);
 
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test);
+        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test2);
         Bitmap bitmap = ImageUtil.beautyImage(mBitmap);
 
         mImageView.setImageBitmap(bitmap);

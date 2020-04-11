@@ -30,9 +30,12 @@
         </activity>
         <activity android:name=".activity.ActivityChangeFilter"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".activity.ActivityChangeRGBA" />
-        <activity android:name=".activity.ActivityColorMatrix" />
-        <activity android:name=".activity.ActivityChangeHue" />
+        <activity android:name=".activity.ActivityChangeRGBA"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".activity.ActivityColorMatrix"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".activity.ActivityChangeHue"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
 </manifest>

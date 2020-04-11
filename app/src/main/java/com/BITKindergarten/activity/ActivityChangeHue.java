@@ -73,7 +73,7 @@ public class ActivityChangeHue extends AppCompatActivity {
             }
         });
 
-        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test);
+        mBitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.test2);
         mImageView.setImageBitmap(mBitmap);
 
     }

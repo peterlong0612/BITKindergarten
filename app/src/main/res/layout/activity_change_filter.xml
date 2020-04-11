@@ -20,14 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:src="@mipmap/test" />
+            android:src="@mipmap/test2" />
 
         <ImageView
             android:id="@+id/imgViewB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:src="@mipmap/test"/>
+            android:src="@mipmap/test2"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +52,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="11"
+                    android:text="湖光"
                     android:onClick="OnClick"/>
 
                 <Button
@@ -61,7 +61,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="12"
+                    android:text="褐片"
                     android:onClick="OnClick"/>
 
                 <Button
@@ -70,7 +70,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="13"
+                    android:text="蓝调"
                     android:onClick="OnClick"/>
 
                 <Button
@@ -79,7 +79,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="14"
+                    android:text="青柠"
                     android:onClick="OnClick"/>
 
                 <Button
@@ -88,7 +88,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="15"
+                    android:text="夜色"
                     android:onClick="OnClick"/>
 
                 <Button
@@ -97,7 +97,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="16"
+                    android:text="复古"
                     android:onClick="OnClick"/>
             </LinearLayout>
             <LinearLayout
@@ -112,7 +112,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="21"
+                    android:text="泛黄"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -121,7 +121,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="22"
+                    android:text="酒红"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -130,7 +130,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="23"
+                    android:text="传统"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -139,7 +139,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="24"
+                    android:text="锐色"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -148,7 +148,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="25"
+                    android:text="哥特"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -157,7 +157,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="26"
+                    android:text="梦幻"
                     android:onClick="OnClick"
                     />
             </LinearLayout>
@@ -173,7 +173,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="31"
+                    android:text="浪漫"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -182,7 +182,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="32"
+                    android:text="淡雅"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -191,7 +191,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="33"
+                    android:text="怀旧"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -200,7 +200,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="34"
+                    android:text="光晕"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -209,7 +209,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="35"
+                    android:text="黑白"
                     android:onClick="OnClick"
                     />
                 <Button
@@ -218,7 +218,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:text="36"
+                    android:text="胶片2"
                     android:onClick="OnClick"
                     />
             </LinearLayout>
@@ -245,6 +245,7 @@
                     style="?android:attr/buttonBarButtonStyle"
                     android:layout_weight="1"
                     android:text="保存"
+
                     android:onClick="OnClick">
 
                 </Button>

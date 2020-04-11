@@ -1,4 +1,4 @@
-package com.BITKindergarten.activity;
+package com.BITKindergarten.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -12,10 +12,10 @@ public class ImageUtil {
     /**
      * 调整图片的色相，饱和度，灰度
      *
-     * @param srcBitmap
-     * @param rotate
-     * @param saturation
-     * @param scale
+     * @param srcBitmap 图片路径
+     * @param rotate    色相
+     * @param saturation 饱和度
+     * @param scale     曝光度
      * @return
      */
     public static Bitmap beautyImage(Bitmap srcBitmap, float rotate, float saturation, float scale) {
@@ -160,7 +160,7 @@ public class ImageUtil {
             0.0f, 0.0f, 0.8f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f, 0.0f,
             0, 0, 0, 1.0f, 0};
     // 泛黄
-    public static final float colormatrix_huan_huang[] = {1.0f, 0.0f, 0.0f,
+    public static final float colormatrix_fan_huang[] = {1.0f, 0.0f, 0.0f,
             0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f,
             0.0f, 0, 0, 0, 1.0f, 0};
     // 传统
