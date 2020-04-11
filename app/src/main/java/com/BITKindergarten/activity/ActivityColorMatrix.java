@@ -33,6 +33,7 @@ public class ActivityColorMatrix extends AppCompatActivity implements SeekBar.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color_matrix);
+        // 组件初始化
 
         mImageView = findViewById(R.id.imageView);
         mRotateSeekBar = findViewById(R.id.seekBar_rotate);

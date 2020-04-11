@@ -306,7 +306,7 @@ public class ActivityChangeFilter extends AppCompatActivity {
 
         //创建一个大小相同的空白Bitmap
         Bitmap dstBitmap = Bitmap.createBitmap(srcBitmap.getWidth(), srcBitmap.getHeight(), Bitmap.Config.ARGB_8888);
-
+        //获取颜色矩阵
         ColorMatrix colorMatrix = new ColorMatrix();
         colorMatrix.set(mColorMatrixList.get(finalPos));
         //载入Canvas,Paint
