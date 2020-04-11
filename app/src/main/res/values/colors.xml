@@ -3,4 +3,7 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="appblue">#0094ff</color>
+    <color name="lightgreen">#94ff00</color>
+    <color name="bohegreen">#00ff94</color>
 </resources>

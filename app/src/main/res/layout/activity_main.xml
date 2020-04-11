@@ -29,7 +29,7 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:background="#662196F3"
-            android:text="ColorMatrix效果" />
+            android:text="色相、饱和、曝光" />
 
         <Button
             android:id="@+id/btn_Two"
@@ -37,7 +37,7 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:background="#66FFFF00"
-            android:text="通过矩阵改变色调" />
+            android:text="ColorMatrix矩阵自由修图" />
 
         <Button
             android:id="@+id/btn_Three"
@@ -45,7 +45,7 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:background="#6600FFFF"
-            android:text="改像素点RGBA颜色反转" />
+            android:text="底片效果" />
 
         <Button
             android:id="@+id/btn_Four"
@@ -53,7 +53,7 @@
             android:layout_height="100dp"
             android:layout_weight="1"
             android:background="#6600FF00"
-            android:text="为照片添加滤镜" />
+            android:text="为照片添加滤镜并保存" />
 
 
     </LinearLayout>
