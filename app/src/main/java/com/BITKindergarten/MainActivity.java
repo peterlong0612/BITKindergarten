@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // 申请授予权限
         PermissionUtils.isGrantExternalRW(this,1);
 
         findViewById(R.id.btn_One).setOnClickListener(new View.OnClickListener() {
