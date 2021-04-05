@@ -49,7 +49,6 @@
 
 
 ### 矩阵修图
-![主界面](./mdsrc/main.jpg width="200" height="300")
 
 ![主界面](./mdsrc/main.jpg)
 
